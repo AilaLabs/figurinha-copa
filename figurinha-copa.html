@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sua Figurinha Copa 2026 · AILA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --base:#0A0A0A;
+    --base-2:#121212;
+    --base-3:#1A1A1A;
+    --line:#262626;
+    --line-2:#333333;
+    --cream:#FAFAF8;
+    --muted:#888888;
+    --muted-2:#666666;
+    --cyan:#34C4F9;
+    --violet:#8D80EC;
+    --magenta:#E63DE0;
+    --grad: linear-gradient(90deg, #34C4F9 0%, #8D80EC 50%, #E63DE0 100%);
+    --grad-soft: linear-gradient(135deg, rgba(52,196,249,.08) 0%, rgba(141,128,236,.08) 50%, rgba(230,61,224,.08) 100%);
+    --display: 'Cormorant Garamond', serif;
+    --body: 'Satoshi', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--base);color:var(--cream);font-family:var(--body);font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+  /* Decorativo: número 26 gigante de fundo */
+  .bg-26{
+    position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-family:var(--display); font-weight:700; font-size:min(80vw, 1100px);
+    line-height:.8; color:#0e0e0e; user-select:none; pointer-events:none;
+    z-index:0; letter-spacing:-.05em;
+  }
+
+  /* Grain overlay */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.04; mix-blend-mode:overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+  }
+
+  .wrap{position:relative; z-index:2; max-width:1320px; margin:0 auto; padding:32px 48px 80px;}
+
+  /* Topo */
+  header.top{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-bottom:24px; border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:36px; height:36px; border-radius:50%;
+    background:var(--grad); position:relative;
+  }
+  .brand-mark::after{
+    content:""; position:absolute; inset:4px; border-radius:50%; background:var(--base);
+  }
+  .brand-name{font-family:var(--display); font-size:24px; font-weight:600; letter-spacing:.02em}
+  .top-meta{font-family:var(--mono); font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.18em;}
+  .top-meta span{color:var(--violet)}
+
+  /* Hero */
+  .hero{padding:72px 0 56px; max-width:880px;}
+  .eyebrow{
+    font-family:var(--mono); font-size:11px; letter-spacing:.28em; text-transform:uppercase;
+    color:var(--violet); display:inline-flex; align-items:center; gap:12px; margin-bottom:28px;
+  }
+  .eyebrow::before{content:""; width:32px; height:1px; background:var(--violet)}
+  h1{
+    font-family:var(--display); font-weight:500; font-size:clamp(48px, 7.2vw, 92px);
+    line-height:1; letter-spacing:-.02em; margin-bottom:24px;
+  }
+  h1 .italic{font-style:italic; font-weight:400}
+  h1 .grad{
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-style:italic; font-weight:400;
+  }
+  .hero p.lead{
+    font-size:18px; color:#bdbdbd; max-width:620px; line-height:1.55; font-weight:300;
+  }
+
+  /* Grid principal */
+  .grid{
+    display:grid; grid-template-columns: 1.05fr 1fr; gap:48px; align-items:start;
+  }
+  @media (max-width: 980px){
+    .wrap{padding:24px 24px 64px}
+    .grid{grid-template-columns:1fr; gap:32px}
+    .hero{padding:48px 0 36px}
+  }
+
+  /* Cards */
+  .card{
+    background:var(--base-2); border:1px solid var(--line); border-radius:18px;
+    padding:32px; position:relative; overflow:hidden;
+  }
+  .card-eyebrow{
+    font-family:var(--mono); font-size:10px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--muted); display:flex; justify-content:space-between; align-items:center; margin-bottom:24px;
+  }
+  .card-eyebrow .num{color:var(--violet)}
+  .card-title{
+    font-family:var(--display); font-size:32px; font-weight:500; letter-spacing:-.01em; line-height:1.1;
+    margin-bottom:8px;
+  }
+  .card-sub{font-size:13px; color:var(--muted); margin-bottom:28px}
+
+  /* Form */
+  .field{margin-bottom:22px;}
+  .field label{
+    display:block; font-family:var(--mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--muted); margin-bottom:10px;
+  }
+  .field label .opt{color:var(--muted-2); text-transform:none; letter-spacing:0; font-size:11px; margin-left:6px}
+  .field input[type="text"], .field input[type="number"], .field select{
+    width:100%; background:transparent; border:none; border-bottom:1px solid var(--line-2);
+    color:var(--cream); font-family:var(--body); font-size:17px; padding:10px 0 12px;
+    transition:border-color .25s ease;
+  }
+  .field input::placeholder{color:#555}
+  .field input:focus, .field select:focus{outline:none; border-bottom-color:var(--cyan)}
+  .field select{appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%23888' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 4px center; cursor:pointer}
+  .field select option{background:var(--base-2); color:var(--cream)}
+
+  .field-row{display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px}
+  @media (max-width:560px){.field-row{grid-template-columns:1fr}}
+
+  /* Estilo picker */
+  .picker{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px}
+  @media (max-width:560px){.picker{grid-template-columns:1fr}}
+  .picker label{
+    cursor:pointer; padding:14px 14px; border:1px solid var(--line-2); border-radius:12px;
+    text-align:left; transition:all .2s ease; background:var(--base-3);
+    display:flex; flex-direction:column; gap:4px;
+    font-family:var(--body); text-transform:none; letter-spacing:0; color:var(--cream); font-size:14px; font-weight:500;
+    margin-bottom:0;
+  }
+  .picker label .desc{font-family:var(--mono); font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); font-weight:400}
+  .picker input{position:absolute; opacity:0; pointer-events:none}
+  .picker input:checked + label{
+    border-color:transparent; background:var(--base-3);
+    box-shadow: 0 0 0 1px var(--violet), 0 0 24px -8px var(--violet);
+  }
+  .picker input:checked + label .desc{color:var(--violet)}
+
+  /* Foto upload */
+  .upload{
+    border:1px dashed var(--line-2); border-radius:14px; padding:24px; text-align:center;
+    cursor:pointer; transition:border-color .25s, background .25s; position:relative;
+    background: var(--grad-soft);
+  }
+  .upload:hover{border-color:var(--violet)}
+  .upload input{position:absolute; opacity:0; inset:0; cursor:pointer}
+  .upload-icon{
+    width:48px; height:48px; border-radius:50%; background:var(--base-3);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px;
+    border:1px solid var(--line-2);
+  }
+  .upload-text{font-size:14px; color:#bdbdbd}
+  .upload-hint{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-top:6px}
+  .upload.has-img{padding:0; border-style:solid; border-color:var(--violet)}
+  .upload.has-img img{width:100%; max-height:260px; object-fit:contain; border-radius:13px; background:var(--base-3)}
+  .upload.has-img .upload-icon, .upload.has-img .upload-text, .upload.has-img .upload-hint{display:none}
+  .upload-replace{
+    position:absolute; top:10px; right:10px; padding:6px 12px; border-radius:8px;
+    background:rgba(10,10,10,.85); border:1px solid var(--line-2); font-family:var(--mono);
+    font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--cream);
+    display:none; backdrop-filter:blur(4px);
+  }
+  .upload.has-img .upload-replace{display:block}
+
+  /* Preview do prompt */
+  .preview-card{
+    position:sticky; top:32px;
+  }
+  .preview-card::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--grad);
+    border-radius:18px 18px 0 0;
+  }
+  .prompt-box{
+    background:var(--base); border:1px solid var(--line); border-radius:12px; padding:22px;
+    font-family:var(--mono); font-size:13px; line-height:1.65; color:#d8d8d8;
+    white-space:pre-wrap; word-wrap:break-word; max-height:480px; overflow-y:auto;
+    transition:border-color .25s;
+  }
+  .prompt-box::-webkit-scrollbar{width:6px}
+  .prompt-box::-webkit-scrollbar-track{background:transparent}
+  .prompt-box::-webkit-scrollbar-thumb{background:var(--line-2); border-radius:3px}
+  .prompt-box .hi{color:var(--cyan)}
+  .prompt-box .hi-v{color:var(--violet)}
+  .prompt-box .hi-m{color:var(--magenta)}
+
+  .actions{display:flex; gap:12px; margin-top:20px}
+  .btn{
+    flex:1; padding:16px 20px; border-radius:12px; border:none; cursor:pointer;
+    font-family:var(--body); font-weight:500; font-size:14px; letter-spacing:.02em;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    transition:transform .15s ease, box-shadow .25s ease;
+  }
+  .btn-primary{
+    background:var(--grad); color:#0A0A0A; font-weight:700;
+    box-shadow: 0 0 0 0 rgba(141,128,236,0);
+  }
+  .btn-primary:hover{transform:translateY(-1px); box-shadow: 0 8px 32px -8px rgba(141,128,236,.6)}
+  .btn-primary.copied{background:var(--cream)}
+  .btn-secondary{
+    background:transparent; color:var(--cream); border:1px solid var(--line-2); flex:0 0 auto; padding:16px 18px;
+  }
+  .btn-secondary:hover{border-color:var(--violet); color:var(--violet)}
+
+  /* Stats da figurinha (preview visual extra) */
+  .meta-row{
+    display:flex; justify-content:space-between; align-items:center; margin-top:18px;
+    padding-top:18px; border-top:1px solid var(--line);
+  }
+  .meta-row .count{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.16em; text-transform:uppercase}
+  .meta-row .count strong{color:var(--cyan); font-weight:600}
+
+  /* Instruções */
+  .how{
+    margin-bottom:48px; padding:36px; border:1px solid var(--line); border-radius:18px; background:var(--base-2);
+  }
+  .how-title{
+    font-family:var(--mono); font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;
+  }
+  .how-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:32px}
+  @media (max-width:780px){.how-grid{grid-template-columns:1fr}}
+  .step .step-num{
+    font-family:var(--display); font-size:48px; line-height:1; font-style:italic;
+    background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+    font-weight:400; margin-bottom:12px;
+  }
+  .step h3{font-family:var(--display); font-size:22px; font-weight:500; margin-bottom:8px; letter-spacing:-.01em}
+  .step p{font-size:14px; color:#bdbdbd; line-height:1.6; font-weight:300}
+  .step .tools{font-family:var(--mono); font-size:11px; color:var(--muted); margin-top:10px; letter-spacing:.04em}
+  .step .tools span{color:var(--cyan)}
+
+  /* Footer */
+  footer{
+    margin-top:64px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  }
+  footer .tag{font-family:var(--display); font-style:italic; font-size:18px; color:#bdbdbd}
+  footer .tag em{font-style:italic; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  footer .handle{font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.18em; text-transform:uppercase}
+  footer .handle span{color:var(--violet)}
+
+  /* Toast */
+  .toast{
+    position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--cream); color:var(--base); padding:14px 22px; border-radius:12px;
+    font-family:var(--body); font-size:14px; font-weight:500;
+    opacity:0; transition:opacity .25s ease, transform .25s ease; z-index:100;
+    display:flex; align-items:center; gap:10px;
+    box-shadow:0 12px 40px -8px rgba(141,128,236,.4);
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="bg-26">26</div>
+<div class="grain"></div>
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div>
+        <div class="brand-name">AILA</div>
+      </div>
+    </div>
+    <div class="top-meta">FIFA <span>·</span> Edição 2026 <span>·</span> Gerador de Prompt</div>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">Figurinha Oficial Copa 2026</div>
+    <h1>Sua cara<br/>na <span class="grad">figurinha</span> <span class="italic">da copa.</span></h1>
+    <p class="lead">Preencha os campos abaixo, faça upload da sua foto e gere um prompt prontinho para colar no Sora, ChatGPT, Gemini ou Midjourney. Em segundos você vira jogador da seleção.</p>
+  </section>
+
+  <!-- COMO USAR -->
+  <section class="how">
+    <div class="how-title">— Como usar</div>
+    <div class="how-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Preencha os dados</h3>
+        <p>Nome, data de nascimento, altura, peso e clube. Faça upload de uma foto sua bem iluminada, de frente, com o rosto centralizado.</p>
+        <div class="tools">Dica: <span>foto fundo neutro</span> = melhor resultado</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Copie o prompt</h3>
+        <p>Clique em <em>Copiar Prompt</em>. O texto completo já vai estar formatado com seus dados e o estilo escolhido.</p>
+        <div class="tools">Ou baixe como <span>.txt</span> pelo botão ao lado</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Cole e anexe a foto</h3>
+        <p>Abra Sora, ChatGPT (modo imagem), Gemini ou Midjourney. Cole o prompt, anexe a foto e gere. Em segundos sua figurinha está pronta.</p>
+        <div class="tools">Funciona em: <span>Sora · GPT-Image · Nano Banana · Midjourney</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <!-- COLUNA ESQUERDA: FORMULÁRIO -->
+    <div class="card">
+      <div class="card-eyebrow"><span>Etapa 01 · Seus Dados</span><span class="num">01/02</span></div>
+      <div class="card-title">Monte sua figurinha.</div>
+      <p class="card-sub">Capricha no nome e nas estatísticas — vai aparecer na figurinha gerada.</p>
+
+      <div class="field">
+        <label for="nome">Nome da figurinha</label>
+        <input type="text" id="nome" placeholder="ex.: RAPHAEL MERES" value="RAPHAEL MERES" autocomplete="off" />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="data">Nascimento</label>
+          <input type="text" id="data" placeholder="12-7-2000" value="12-7-2000" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="altura">Altura</label>
+          <input type="text" id="altura" placeholder="1,76m" value="1,76m" autocomplete="off" />
+        </div>
+        <div class="field">
+          <label for="peso">Peso</label>
+          <input type="text" id="peso" placeholder="73 kg" value="73 kg" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="clube">Clube atual <span class="opt">(com país, ex.: Real Madrid CF (ESP))</span></label>
+        <input type="text" id="clube" placeholder="REAL MADRID CF (ESP)" value="REAL MADRID CF (ESP)" autocomplete="off" />
+      </div>
+
+      <div class="field">
+        <label>Sua foto <span class="opt">(rosto centralizado, boa iluminação)</span></label>
+        <div class="upload" id="upload">
+          <input type="file" id="foto" accept="image/*" />
+          <div class="upload-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-4 4M12 4l4 4"/><path d="M3 16v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg>
+          </div>
+          <div class="upload-text">Arraste sua foto ou clique para escolher</div>
+          <div class="upload-hint">JPG, PNG · até 10MB</div>
+          <img id="preview" alt="" />
+          <div class="upload-replace">Trocar foto</div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-bottom:8px">
+        <label>Estilo da figurinha</label>
+        <div class="picker">
+          <input type="radio" name="estilo" id="e1" value="padrao" checked />
+          <label for="e1">Padrão<span class="desc">Panini Oficial</span></label>
+
+          <input type="radio" name="estilo" id="e2" value="real" />
+          <label for="e2">Premium<span class="desc">+ Real / Álbum</span></label>
+
+          <input type="radio" name="estilo" id="e3" value="braba" />
+          <label for="e3">Braba<span class="desc">Lendária / Anos 2000</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: PREVIEW PROMPT -->
+    <div class="card preview-card">
+      <div class="card-eyebrow"><span>Etapa 02 · Seu Prompt</span><span class="num">02/02</span></div>
+      <div class="card-title">Prompt gerado.</div>
+      <p class="card-sub">Copie e cole em Sora, ChatGPT, Gemini, Midjourney ou qualquer gerador de imagem.</p>
+
+      <div class="prompt-box" id="promptBox"></div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="copyBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copyTxt">Copiar Prompt</span>
+        </button>
+        <button class="btn btn-secondary" id="downloadBtn" title="Baixar como .txt">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </button>
+      </div>
+
+      <div class="meta-row">
+        <div class="count">Caracteres: <strong id="charCount">0</strong></div>
+        <div class="count">Palavras: <strong id="wordCount">0</strong></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="tag">Sua empresa, <em>AI Driven.</em></div>
+    <div class="handle">AILA <span>·</span> @meresiam</div>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  <span>Prompt copiado!</span>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  const nome = $('nome'), data = $('data'), altura = $('altura'), peso = $('peso'), clube = $('clube');
+  const promptBox = $('promptBox'), charCount = $('charCount'), wordCount = $('wordCount');
+  const copyBtn = $('copyBtn'), copyTxt = $('copyTxt'), downloadBtn = $('downloadBtn');
+  const toast = $('toast');
+  const upload = $('upload'), foto = $('foto'), preview = $('preview');
+  const estilos = document.querySelectorAll('input[name="estilo"]');
+
+  const ESTILO_EXTRA = {
+    padrao: '',
+    real: ' Estilo gráfico oficial da Panini, bordas suaves, design limpo de álbum da Copa, visual de impressão real.',
+    braba: ' Mistura de jogador lendário com estética retrô anos 2000, figurinha rara da Copa do Mundo, aura de craque.'
+  };
+
+  function getEstilo(){
+    for (const r of estilos) if (r.checked) return r.value;
+    return 'padrao';
+  }
+
+  function buildPrompt(){
+    const n = (nome.value || 'SEU NOME').toUpperCase().trim();
+    const d = (data.value || '00-0-0000').trim();
+    const h = (altura.value || '0,00m').trim();
+    const p = (peso.value || '0 kg').trim();
+    const c = (clube.value || 'CLUBE (PAÍS)').toUpperCase().trim();
+    const extra = ESTILO_EXTRA[getEstilo()] || '';
+
+    return `Figurinha oficial estilo Copa do Mundo 2026 da Panini, retrato ultra realista de um jogador de futebol usando a camisa da seleção brasileira, composição centralizada, fundo azul-turquesa com formas geométricas verdes grandes, estética de figurinha colecionável da FIFA, iluminação limpa de estúdio, textura de pele extremamente detalhada, expressão sorridente, layout clássico de figurinha Panini vintage, ícone da bandeira do Brasil, estilo visual inspirado na Copa do Mundo FIFA, caixa de texto arredondada na parte inferior, estatísticas do jogador e informações do clube, textura realista do tecido da camisa, fotografia de retrato profissional, foco extremamente nítido, cores vibrantes, visual oficial de trading card, 8k, fotorrealista.
+
+Substituir o rosto original do jogador pelo rosto da foto anexada, ultra realista, mantendo a mesma pose, corpo e uniforme da seleção brasileira.
+
+O texto inferior da figurinha deve dizer:
+${n}
+${d} | ${h} | ${p}
+${c}${extra}`;
+  }
+
+  function renderPrompt(){
+    const txt = buildPrompt();
+    // versão com syntax highlight para o preview
+    const escaped = txt
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const highlighted = escaped
+      .replace(/(Figurinha oficial estilo Copa do Mundo 2026 da Panini)/, '<span class="hi-v">$1</span>')
+      .replace(/(Substituir o rosto original[^.]+\.)/, '<span class="hi">$1</span>')
+      .replace(/(O texto inferior da figurinha deve dizer:)/, '<span class="hi-m">$1</span>');
+    promptBox.innerHTML = highlighted;
+
+    charCount.textContent = txt.length;
+    wordCount.textContent = txt.trim().split(/\s+/).length;
+  }
+
+  // Live update
+  [nome, data, altura, peso, clube].forEach(el => el.addEventListener('input', renderPrompt));
+  estilos.forEach(r => r.addEventListener('change', renderPrompt));
+
+  // Upload preview
+  foto.addEventListener('change', (e) => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      preview.src = ev.target.result;
+      upload.classList.add('has-img');
+    };
+    reader.readAsDataURL(f);
+  });
+
+  // Copy
+  copyBtn.addEventListener('click', async () => {
+    const txt = buildPrompt();
+    try {
+      await navigator.clipboard.writeText(txt);
+    } catch {
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
+    }
+    copyTxt.textContent = 'Copiado ✓';
+    copyBtn.classList.add('copied');
+    toast.classList.add('show');
+    setTimeout(() => {
+      copyTxt.textContent = 'Copiar Prompt';
+      copyBtn.classList.remove('copied');
+      toast.classList.remove('show');
+    }, 1800);
+  });
+
+  // Download
+  downloadBtn.addEventListener('click', () => {
+    const txt = buildPrompt();
+    const blob = new Blob([txt], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = `figurinha-${(nome.value || 'jogador').toLowerCase().replace(/\s+/g,'-')}.txt`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+
+  // Boot
+  renderPrompt();
+})();
+</script>
+</body>
+</html>
